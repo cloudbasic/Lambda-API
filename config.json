@@ -1,0 +1,95 @@
+{
+  "xml": false,
+  "https": true,
+  "addOptions": {
+    "httpPort": "82",
+    "httpsPort": "4432",
+    "basePath": "/api/"
+  },
+  "options": {
+    "host": "your.server1.IP.address",
+    "port": "4432",    
+    "method": "GET",
+    "service": "cloudbasic",
+    "rejectUnauthorized": false,
+    "headers": {
+      "X-Amz-Content-Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Content-Type": "application/xml"
+    },
+    "timeout": 120
+  },
+  "activateInstance": {
+    "ActivateInstanceRequest": {
+      "Email": "your_user@your_domain.com",
+      "InstanceId": "i-011c1c1edd1111dc1",
+      "Password": "YourPassword",
+      "IsProduction": true,
+      "Company": "test",
+      "ContactPerson": "",
+      "ActivationKey": ""
+    }
+  },
+  "createUser": {
+    "CreateUserRequest": {
+      "Email": "new_email@your_domain.com",
+      "Username": "new_user",
+      "FirstName": "New",
+      "LastName": "User",
+      "Password": "YourPassword",
+      "IsAdmin": true
+    }
+  },
+  "createReplication": {
+    "CreateReplicationRequest": {
+      "ReplicationMethod": "ContinuousWithAutoSeeding",
+      "ReplicateLoginsUsersAndRoles": false,
+      "ReplicateTablesOnly": false,
+      "ParallelTablesLimit": "5",
+      "RebuildIndexes": false,      
+      "Source": {
+        "ConnectionString": "Data Source=your.server.name;Initial Catalog=YourDatabaseName;Persist Security Info=False;User ID=YourUser;Password=YourPassword;Connect Timeout=1280",
+        "EncryptDataInTransit": false,
+        "ChangeTrackingRetentionPeriod": "2 DAYS",
+        "ResetChangeTracking": false
+      },
+      "Destination": {
+        "ConnectionString": "Data Source=your.destination.server.name;Initial Catalog=YourDestinationDatabaseName;Persist Security Info=False;User ID=YourUser;Password=YourPassword;Connect Timeout=1280",
+        "EncryptDataInTransit": false,
+        "ReplicateCompatibilityLevel": true,
+        "AzureServerTier": null,
+        "AzureMaxDbSize": null,
+        "CustomDbCreateScript": null,
+        "PreSeedingCustomAction": null,
+        "PostSeedingCustomAction": null
+      }      
+    }
+  },
+  "deleteReplication": {
+    "DeleteReplicationRequest": {
+      "ReplicationId": ""
+    }
+  },
+  "replicationStatus": {
+    "ReplicationStatusRequest": {
+      "ReplicationId": ""
+    }
+  },
+  "analyzeReplication": {
+    "AnalyzeReplicationRequest": {
+      "ReplicationId": ""
+    }
+  },
+  "createCluster": {
+    "CreateClusterRequest": {
+      "RemoteServer": "your.server2.IP.address",
+      "Port": "81",
+      "PublicKey": "YOUR.PUBLIC.KEY.ID",
+      "PrivateKey": "YOUR.PRIVATE.KEY.VALUE"
+    }
+  },
+  "deleteCluster": {
+    "DeleteClusterRequest": {
+      "StandaloneServer": ""
+    }
+  }
+}
