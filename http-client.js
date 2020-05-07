@@ -56,7 +56,7 @@ function createOptions(path) {
     options.port = CONFIG.https ? CONFIG.addOptions.httpsPort : CONFIG.addOptions.httpPort;
         
     if (!CONFIG.xml) {
-        options.headers["Content-Type"] = "application/json"
+        options.headers["Content-Type"] = "application/json";
     }
 
     return options;
@@ -73,17 +73,18 @@ function post(path, model, callback, creds = undefined) {
     }
 
     return request(options, callback);
-};
+}
 
 function get(path, callback, creds = undefined) {
     var options = createOptions(path);
 
+    options.method = 'GET';
     if (creds) {
         sign(options, creds);
     }
 
     return request(options, callback);
-};
+}
 
 function request(options, callback) {
     var protocol = CONFIG.https ? https : http;
@@ -118,7 +119,8 @@ function request(options, callback) {
             });
         }
     });
-    req.write(options.body);
+    if (options.method =='POST')
+        req.write(options.body);
     req.end();
 }
 
